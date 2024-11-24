@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quadratic Voting Interface</title>
+  <link rel="stylesheet" href="stylemobile.css">
+</head>
+<body>
+  <!-- Credit and Vote Counts -->
+  <div id="display">
+    <p>CREDIT: <span id="credit-count">0</span> | VOTE: <span id="vote-count">0</span></p>
+  </div>
+
+  <!-- Dropdown Container -->
+  <div id="dropdown-container">
+    <div id="dropdown-header">
+      <span id="arrow">▶</span> CONVERSION RATES
+    </div>
+    <div id="dropdown-content">
+      <p>01 votes = 01 credits</p>
+      <p>02 votes = 04 credits</p>
+      <p>03 votes = 09 credits</p>
+      <p>04 votes = 16 credits</p>
+      <p>
+        In Quadratic Voting, you receive a number of credits that can be exchanged for votes.
+        These votes can be spent in favor of or in opposition to issues on the ballot.
+      </p>
+    </div>
+  </div>
+
+  <!-- Knob and Concentric Circles -->
+  <div id="knob-container">
+    <div id="knob">
+      <div id="center-indicator">
+        <div id="dashed-circle"></div>
+        <div id="line-indicator"></div>
+      </div>
+    </div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <script src="scriptmobile.js"></script>
+</body>
+</html>

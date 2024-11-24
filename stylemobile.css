@@ -1,0 +1,199 @@
+/* General Styles */
+body {
+    font-family: "Courier New", Courier, monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fff;
+  }
+  
+  /* Credit and Vote Counts */
+  #display {
+    text-align: center;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    font-size: 18px;
+    z-index: 102;
+  }
+  
+  /* Dropdown Container */
+  #dropdown-container {
+    position: absolute;
+    top: calc(15% + 70px); /* Slightly below the counts */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: "Courier New", Courier, monospace;
+    z-index: 101;
+    background-color: rgba(255, 255, 255, 1);
+  }
+  
+  /* Dropdown Header */
+  #dropdown-header {
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  /* Dropdown Content */
+  #dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    padding: 0 10px;
+    font-size: 12px;
+    line-height: 1.4;
+    background-color: rgba(255, 255, 255, 0); /* Transparent when collapsed */
+    z-index: -1;
+  }
+  
+  #dropdown-container.expanded #dropdown-content {
+    max-height: 300px; /* Expand content smoothly */
+    padding: 10px;
+    background-color: #fff;
+    z-index: 101;
+  }
+  
+  /* Arrow Transition */
+  #arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  #dropdown-container.expanded #arrow {
+    transform: rotate(90deg);
+  }
+  
+  /* Knob and Concentric Circles */
+  #knob-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin-top: 200px;
+  }
+  
+  #knob {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transform-origin: center;
+    border-radius: 50%;
+    background: rgba(200, 200, 200, 0.5);
+    z-index: 100;
+  }
+  
+  #center-indicator {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+  }
+  
+  #dashed-circle {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 0;
+    left: 0;
+    border: 1px dashed #000;
+    border-radius: 50%;
+    box-sizing: border-box;
+    z-index: 99;
+  }
+  
+  #line-indicator {
+    position: absolute;
+    width: 2px;
+    height: 25px;
+    background-color: #000;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Concentric Circles */
+  .circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: rgba(0, 128, 0, 0);
+    z-index: 1;
+  }
+  
+  .circle:nth-child(1) {
+    width: 70px;
+    height: 70px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+  }
+  
+  .circle:nth-child(2) {
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 98;
+  }
+  
+  .circle:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 97;
+  }
+  
+  .circle:nth-child(4) {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 96;
+  }
+  
+  .circle:nth-child(5) {
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 95;
+  }
+  
+  /* Dynamically Generated Intermediate Circles */
+  .intermediate-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: none;
+    z-index: 0;
+    background: rgba(0, 128, 0, 0);
+    transition: background 0.1s linear, width 0.1s linear, height 0.1s linear;
+  }
+  
