@@ -9,28 +9,29 @@ body {
     justify-content: center;
     height: 100vh;
     background-color: #fff;
+    overflow: hidden; /* Prevent any scrolling */
   }
   
   /* Credit and Vote Counts */
   #display {
     text-align: center;
     position: absolute;
-    top: 15%;
+    top: 12%;
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 10px;
-    font-size: 18px;
+    margin-bottom: 5px;
+    font-size: 16px; /* Slightly smaller for mobile */
     z-index: 102;
   }
   
   /* Dropdown Container */
   #dropdown-container {
     position: absolute;
-    top: calc(15% + 70px); /* Slightly below the counts */
+    top: calc(12% + 70px); /* Below the credit/vote counts */
     left: 50%;
     transform: translateX(-50%);
-    width: 250px;
-    border: 1px solid #000;
+    width: 60%; /* Use a percentage for mobile responsiveness */
+    border: 0.5px solid #000;
     border-radius: 5px;
     overflow: hidden;
     font-family: "Courier New", Courier, monospace;
@@ -41,7 +42,7 @@ body {
   /* Dropdown Header */
   #dropdown-header {
     background-color: #ffffff;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
     text-align: center;
     border-bottom: 1px solid #ddd;
@@ -65,7 +66,7 @@ body {
   }
   
   #dropdown-container.expanded #dropdown-content {
-    max-height: 300px; /* Expand content smoothly */
+    max-height: 300px; /* Adjusted height for smaller screens */
     padding: 10px;
     background-color: #fff;
     z-index: 101;
@@ -83,15 +84,15 @@ body {
   /* Knob and Concentric Circles */
   #knob-container {
     position: relative;
-    width: 400px;
-    height: 400px;
-    margin-top: 200px;
+    width: 80vw; /* Use viewport width for responsiveness */
+    height: 80vw; /* Maintain square aspect ratio */
+    margin-top: 20px; /* Add space below the dropdown */
   }
   
   #knob {
     position: absolute;
-    width: 70px;
-    height: 70px;
+    width: 14vw; /* Scale knob size dynamically */
+    height: 14vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(0deg);
@@ -103,18 +104,18 @@ body {
   
   #center-indicator {
     position: absolute;
-    width: 70px;
-    height: 70px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
     z-index: 101;
   }
   
   #dashed-circle {
     position: absolute;
-    width: 70px;
-    height: 70px;
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
     border: 1px dashed #000;
@@ -126,12 +127,25 @@ body {
   #line-indicator {
     position: absolute;
     width: 2px;
-    height: 25px;
+    height: 15%;
     background-color: #000;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
   }
+
+  #direction-indicator {
+    text-align: center;
+    position: absolute;
+    top: 10%; /* Place it above the credit/vote display */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #000; /* Default color */
+    z-index: 103;
+  }
+  
   
   /* Concentric Circles */
   .circle {
@@ -143,8 +157,8 @@ body {
   }
   
   .circle:nth-child(1) {
-    width: 70px;
-    height: 70px;
+    width: 14vw; /* Matches knob size */
+    height: 14vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -152,8 +166,8 @@ body {
   }
   
   .circle:nth-child(2) {
-    width: 100px;
-    height: 100px;
+    width: 20vw; /* Scaled dynamically */
+    height: 20vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -161,8 +175,8 @@ body {
   }
   
   .circle:nth-child(3) {
-    width: 200px;
-    height: 200px;
+    width: 40vw; /* Scaled dynamically */
+    height: 40vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -170,8 +184,8 @@ body {
   }
   
   .circle:nth-child(4) {
-    width: 300px;
-    height: 300px;
+    width: 60vw;
+    height: 60vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -179,21 +193,33 @@ body {
   }
   
   .circle:nth-child(5) {
-    width: 400px;
-    height: 400px;
+    width: 80vw;
+    height: 80vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 95;
   }
   
-  /* Dynamically Generated Intermediate Circles */
-  .intermediate-circle {
-    position: absolute;
-    border-radius: 50%;
-    border: none;
-    z-index: 0;
-    background: rgba(0, 128, 0, 0);
-    transition: background 0.1s linear, width 0.1s linear, height 0.1s linear;
+/* Dynamically Generated Intermediate Circles */
+.intermediate-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: none;
+  z-index: 0;
+  background: rgba(0, 128, 0, 0);
+  transition: background 0.1s linear, width 0.1s linear, height 0.1s linear;
+  
+  /* Center dynamically based on width and height */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center using translate */
+}
+
+  
+  /* Disable scrolling */
+  body.prevent-scroll {
+    touch-action: none;
+    overflow: hidden;
   }
   
